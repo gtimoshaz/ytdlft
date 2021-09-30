@@ -2,8 +2,8 @@
 `ytdlft` -- simple script to download part of video from youtube
 
 # Requirements
-- [https://github.com/ytdl-org/youtube-dl] (youtube-dl) installed
-- [https://github.com/FFmpeg/FFmpeg] (ffmpeg) installed
+- [youtube-dl](https://github.com/ytdl-org/youtube-dl) installed
+- [ffmpeg](https://github.com/FFmpeg/FFmpeg) installed
 - python 3.6+
 
 # Usage
