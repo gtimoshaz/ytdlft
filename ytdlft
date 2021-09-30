@@ -1,0 +1,21 @@
+#!/usr/bin/python
+import os
+import argparse
+
+parser = argparse.ArgumentParser(description="Download part of a youtube video")
+parser.add_argument('url', help='url of a video to download')
+parser.add_argument('-f', help='from where to download. Example: 1:36', required=True)
+parser.add_argument('-t', help='to. Example: 1:52', required=True)
+parser.add_argument('filename')
+args = parser.parse_args()
+
+stream = os.popen(f'youtube-dl --youtube-skip-dash-manifest -g "{args.url}"')
+output = stream.read()
+arr = output.split('\n')
+vid_url = arr[0]
+aud_url = arr[1]
+
+run_command = f'ffmpeg -ss {args.f} -to {args.t} -i "{vid_url}" -ss {args.f} -to {args.t} -i "{aud_url}" -hide_banner -map 0:v -map 1:a {args.filename}'
+print(run_command)
+print()
+os.system(run_command)
